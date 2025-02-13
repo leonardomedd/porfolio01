@@ -1,3 +1,4 @@
+```markdown
 # Leonardo Medeiros de Almeida - Portfolio
 
 Bem-vindo ao repositório do meu portfólio! Este projeto foi desenvolvido para apresentar minhas habilidades, projetos e facilitar o contato profissional.
@@ -36,9 +37,9 @@ Loja fictícia para pet shop, desenvolvida com React e Bootstrap.
 
 🔗 LinkedIn: [Leonardo Medeiros de Almeida](https://www.linkedin.com/in/leonardo-medeiros-de-almeida-996302254/)
 
-📂 Confira meu portfólio ao vivo: [Em breve]
+🌐 **Site do Portfólio:** [https://leonardomedd.netlify.app/](https://leonardomedd.netlify.app/)
 
 ---
 
 💡 Sinta-se à vontade para explorar o código e contribuir! Feedbacks são sempre bem-vindos. 😃
-
+```
