@@ -1,4 +1,3 @@
-```markdown
 # Leonardo Medeiros de Almeida - Portfolio
 
 Bem-vindo ao repositório do meu portfólio! Este projeto foi desenvolvido para apresentar minhas habilidades, projetos e facilitar o contato profissional.
