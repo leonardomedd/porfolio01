@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Github, Linkedin, Mail, ChevronDown, Code2, Database, Github as Git, Layout, Monitor, Server } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 function App() {
+  const form = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (form.current) {
+      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID; // Service ID
+      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID; // Template ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY; // Public Key
+
+      // Inicializa o EmailJS com a Public Key
+      emailjs.init(publicKey);
+
+      // Envia o formulário
+      emailjs.sendForm(serviceID, templateID, form.current)
+        .then((result) => {
+          console.log(result.text);
+          alert('Message sent successfully!');
+          form.current?.reset(); // Limpa o formulário após o envio
+        }, (error) => {
+          console.log(error.text);
+          alert('Failed to send the message, please try again.');
+        });
+    }
+  };
+
   return (
     <div className="bg-gray-900 text-gray-100 min-h-screen">
       {/* Hero Section */}
@@ -124,26 +151,32 @@ function App() {
               <Mail size={32} />
             </a>
           </div>
-          <form className="max-w-lg mx-auto">
+          <form ref={form} onSubmit={sendEmail} className="max-w-lg mx-auto">
             <div className="mb-6">
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
                 className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
             <div className="mb-6">
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
             <div className="mb-6">
               <textarea
+                name="message"
                 placeholder="Your Message"
                 rows={5}
                 className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               ></textarea>
             </div>
             <button
